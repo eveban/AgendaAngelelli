@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo">Sistema de Agenda de Contatos</ui:insert></title>
+	<h:outputStylesheet library="css" name="tabelas.css" />
+	<h:outputStylesheet library="css" name="sistema.css" />
+	<h:outputScript library="js" name="jquery.maskMoney.js" />
+	<h:outputScript target="body" name="enterKeyTab.js" library="js" />
+	<style type="text/css" />
+
+</h:head>
+
+<h:body>
+	<div align="center">
+		<p:layout fullPage="false"
+			style="max-height:650px;max-width:1020px;min-height:650px;min-width:1020px;height:650px;">
+
+			<p:layoutUnit position="north" size="110">
+				<h:panelGrid columns="2" style="width: 100%;">
+
+					<h:graphicImage library="images" name="logo.png" height="80px" />
+
+
+					<h1 style="margin-top: 5px">Agenda Telefônica</h1>
+
+
+				</h:panelGrid>
+			</p:layoutUnit>
+
+			<p:layoutUnit position="west" size="220">
+				<ui:insert name="menu">
+					<h:form>
+						<p:menu style="width: 200px">
+							<p:submenu label="Menu">
+								<p:menuitem value="Cadastrar contatos" icon="ui-icon-contact"
+									outcome="/contatos/CadastraContato" />
+								<p:menuitem value="Pesquisar contatos" icon="ui-icon-search"
+									outcome="/contatos/PesquisaContato" />
+							</p:submenu>
+						</p:menu>
+					</h:form>
+				</ui:insert>
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center">
+				<ui:insert name="corpo">
+                        O que estiver aqui será substituido!
+                    </ui:insert>
+			</p:layoutUnit>
+			<p:layoutUnit position="south" size="30">
+				<h:outputText
+					value="Todos os direitos reservados a CAPS Software Programmer's" />
+			</p:layoutUnit>
+		</p:layout>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:decorate template="../WEB-INF/template/padrao.xhtml">
+	<ui:define name="titulo">#{contatoBean.editando ? "Edição do contato" : "Novo contato"}</ui:define>
+	<ui:define name="corpo">
+		<f:metadata>
+			<!-- Campo para Editar os produto, pegando o id do produto como parametro OmniFaces.org (Será necessário conversor)-->
+			<o:viewParam name="contato" value="#{contatoBean.contato}" />
+		</f:metadata>
+		<h:form id="frmContato">
+
+			<!-- <p:messages autoUpdate="true" closable="true" /> -->
+			<p:growl autoUpdate="true" life="5000" />
+			<p:focus />
+
+			<p:panelGrid id="panelGrid1"
+				style="width: 100%; margin-top: 5px; margin-bottom: 10px">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="10">
+							<h1>#{contatoBean.editando ? "Edição do contato" : "Novo
+								contato"}</h1>
+						</p:column>
+					</p:row>
+				</f:facet>
+				<p:row>
+					<p:column colspan="1">
+						<p:outputLabel value="Código" for="codigo" />
+					</p:column>
+					<p:column colspan="9">
+						<p:inputText id="codigo" value="#{contatoBean.contato.id}"
+							disabled="true" />
+					</p:column>
+
+				</p:row>
+
+				<p:row>
+					<p:column colspan="1">
+						<p:outputLabel value="Nome" for="nome" />
+					</p:column>
+					<p:column colspan="9">
+						<p:inputText id="nome" size="60" maxlength="60"
+							value="#{contatoBean.contato.nome}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="1">
+						<p:outputLabel value="Endereço" for="endereco" />
+					</p:column>
+					<p:column colspan="9">
+						<p:inputText id="endereco" size="80" maxlength="80"
+							value="#{contatoBean.contato.endereco}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="1">
+						<p:outputLabel value="Cidade" for="cidade" />
+					</p:column>
+					<p:column colspan="3">
+						<p:inputText id="cidade" size="30" maxlength="30"
+							value="#{contatoBean.contato.cidade}" />
+					</p:column>
+					<p:column colspan="1">
+						<p:outputLabel value="Estado" for="estado" />
+					</p:column>
+					<p:column colspan="1">
+						<p:inputText id="estado" size="2" maxlength="2"
+							value="#{contatoBean.contato.estado}" />
+					</p:column>
+					<p:column colspan="1">
+						<p:outputLabel value="Cep" for="cep" />
+					</p:column>
+
+					<p:column colspan="3">
+						<p:inputMask mask="99999-999? " converter="converterInput"
+							id="cep" size="9" maxlength="8"
+							value="#{contatoBean.contato.cep}" />
+					</p:column>
+
+				</p:row>
+				<p:row>
+					<p:column colspan="1">
+						<p:outputLabel value="DDD" for="ddd" />
+					</p:column>
+					<p:column colspan="1">
+						<p:inputText id="ddd" value="#{contatoBean.contato.ddd}" size="3"
+							maxlength="3" />
+					</p:column>
+					<p:column colspan="1">
+						<p:outputLabel value="Telefone" for="telefone" />
+					</p:column>
+					<p:column colspan="3">
+						<p:inputMask mask="9999-9999" id="telefone"
+							converter="converterInput"
+							value="#{contatoBean.contato.telefone}" size="15" maxlength="20" />
+					</p:column>
+					<p:column colspan="1">
+						<p:outputLabel value="Celular" for="celular" />
+					</p:column>
+					<p:column colspan="3">
+						<p:inputMask mask="9999-9999" id="celular"
+							value="#{contatoBean.contato.telefoneCelular}" size="15"
+							maxlength="20" converter="converterInput" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column colspan="1">
+						<p:outputLabel value="Comercial" for="comercial" />
+					</p:column>
+					<p:column colspan="3">
+						<p:inputMask mask="9999-9999" id="comercial"
+							converter="converterInput"
+							value="#{contatoBean.contato.telefoneComercial}" size="15"
+							maxlength="20" />
+					</p:column>
+
+					<p:column colspan="1">
+						<p:outputLabel value="Fax" for="fax" />
+					</p:column>
+					<p:column colspan="3">
+						<p:inputMask mask="9999-9999" id="fax" converter="converterInput"
+							value="#{contatoBean.contato.telefoneFax}" size="15"
+							maxlength="20" />
+					</p:column>
+					<p:column colspan="1">
+						<p:outputLabel value="Ramal" for="ramal" />
+					</p:column>
+					<p:column colspan="1">
+						<p:inputText id="ramal" value="#{contatoBean.contato.ramal}"
+							size="10" maxlength="10" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="1">
+						<p:outputLabel value="E-mail" for="email" />
+					</p:column>
+					<p:column colspan="9">
+						<p:inputText id="email" value="#{contatoBean.contato.email}"
+							size="40" maxlength="40" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+			<p:outputLabel value="Informações" for="informacoes" />
+			<h:panelGroup layout="block" style="padding-right: 10px">
+				<p:inputTextarea id="informacoes" rows="4" style="width: 100% "
+					value="#{contatoBean.contato.informacoes}" />
+			</h:panelGroup>
+			<p:commandButton value="Salvar" icon="ui-icon-disk"
+				action="#{contatoBean.salvar}" update="@form" />
+		</h:form>
+
+
+	</ui:define>
+
+
+</ui:decorate>
+</html>

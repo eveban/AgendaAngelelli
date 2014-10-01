@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:decorate template="../WEB-INF/template/padrao.xhtml">
+	<ui:define name="titulo">Cadastro de Contatos</ui:define>
+	<ui:define name="corpo">
+		<f:metadata>
+			<f:event listener="#{contatoBean.pesquisaContatos}"
+				type="preRenderView" />
+		</f:metadata>
+
+		<h:form id="frmPesquisaContato">
+			<p:panelGrid columns="4" style="width: 100%;margin-top: 5px">
+				<f:facet name="header">
+					<h1>Pesquisa Contatos</h1>
+				</f:facet>
+
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" size="40" maxlength="60"
+					value="#{contatoBean.contatoFilter.nome}" />
+
+				<p:outputLabel value="Telefone" for="telefone" />
+				<p:inputText id="telefone" size="20"
+					value="#{contatoBean.contatoFilter.telefone}" />
+
+				<p:outputLabel value="Comercial" for="telefoneComercial" />
+				<p:inputText id="telefoneComercial" size="20"
+					value="#{contatoBean.contatoFilter.telefoneComercial}" />
+
+				<p:outputLabel value="Celular" for="celular" />
+				<p:inputText id="celular" size="20"
+					value="#{contatoBean.contatoFilter.telefoneCelular}" />
+
+			</p:panelGrid>
+			<p:toolbar style="margin-top: 0px;">
+				<f:facet name="left">
+					<p:commandButton value="Pesquisa"
+						action="#{contatoBean.pesquisaContatos}" update="contatosTable" />
+				</f:facet>
+			</p:toolbar>
+
+			<p:dataTable id="contatosTable" var="contato"
+				value="#{contatoBean.contatosFiltrados}" style="margin-top: 5px"
+				emptyMessage="Nenhum contato encontrado" rows="6" paginator="true"
+				paginatorAlwaysVisible="false" paginatorPosition="bottom">
+				<f:facet name="header">
+					Lista de contatos
+				</f:facet>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{contato.nome}" />
+				</p:column>
+				<p:column headerText="DDD" style="text-align: center; width: 80px">
+					<h:outputText value="#{contato.ddd}" />
+				</p:column>
+				<p:column headerText="Telefone"
+					style="text-align: center; width: 80px">
+					<h:outputText value="#{contato.telefone}" />
+				</p:column>
+				<p:column headerText="Comercial"
+					style="text-align: center; width: 80px">
+					<h:outputText value="#{contato.telefoneComercial}" />
+				</p:column>
+
+				<p:column headerText="Celular"
+					style="text-align: center; width: 80px">
+					<h:outputText value="#{contato.telefoneCelular}" />
+				</p:column>
+				<p:column style="text-align: center; width: 70px" headerText="Ações">
+					<p:button icon="ui-icon-pencil" title="Editar"
+						outcome="/contatos/CadastraContato">
+						<f:param name="contato" value="#{contato.id}" />
+					</p:button>
+					<p:commandButton icon="ui-icon-trash" title="Excluir"
+						oncomplete="PF('confirmaExclusao').show();" process="@this"
+						update=":frmPesquisaContato:dialogExclusao">
+						<f:setPropertyActionListener value="#{contato}"
+							target="#{contatoBean.contato}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+			<p:confirmDialog id="dialogExclusao" header="Exclusão de contato"
+				showEffect="fade" closable="true" hideEffect="explode"
+				widgetVar="confirmaExclusao" appendTo="@(body)"
+				message="Tem certeza que deseja excluir o contato #{contatoBean.contato.nome}?">
+				<p:button value="Não"
+					onclick="PF('confirmaExclusao').hide(); return false;"
+					type="button">
+					<!-- <f:param name="contato" value="#{contato.id}" /> -->
+				</p:button>
+				<p:commandButton value="Sim" title="Excluir" icon="ui-icon-trash"
+					action="#{contatoBean.excluir}"
+					oncomplete="PF('confirmaExclusao').hide()"
+					update=":frmPesquisaContato:contatosTable" process="@this" />
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+</ui:decorate>
+</html>

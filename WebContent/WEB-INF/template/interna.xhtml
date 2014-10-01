@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title><ui:insert name="titulo">Sistema de Agenda de Contatos</ui:insert></title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+
+	<h:outputScript library="js" name="jquery.maskMoney.js" />
+	<h:outputScript target="body" name="enterKeyTab.js" library="js" />
+
+	<style type="text/css">
+<!--
+#logotipo {
+	text-align: right;
+	float: right;
+}
+-->
+</style>
+</h:head>
+<body>
+	<div id="container">
+		<div id="titulo">
+			<h:graphicImage library="images" name="logo.png" />
+			<!-- <ui:insert name="titulo">OfficinaSP</ui:insert> -->
+		</div>
+		<div id="logotipo">
+			<!-- 		<h:graphicImage library="images" name="logo.png" /> -->
+		</div>
+		<div id="menu">
+			<h:form>
+				<p:menu style="width: 200px">
+					<p:submenu label="Menu">
+						<p:menuitem value="Cadastrar contatos" icon="ui-icon-contact"
+							outcome="/contatos/CadastraContato" />
+						<p:menuitem value="Pesquisar contatos" icon="ui-icon-search"
+							outcome="/contatos/PesquisaContato" />
+					</p:submenu>
+				</p:menu>
+			</h:form>
+		</div>
+		<div id="corpo">
+			<ui:insert name="corpo" />
+		</div>
+
+		<div id="rodape">
+			<ui:insert name="rodape">
+				<h:outputText
+					value="Todos os direitos reservados a CAPS Software Programmer's" />
+			</ui:insert>
+		</div>
+	</div>
+</body>
+</html>

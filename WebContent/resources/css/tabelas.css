@@ -1,0 +1,32 @@
+.table1 {
+	margin-left: 15%;
+	margin-right: 15%;
+	width: 70%;}
+
+.semBorda tr, .semBorda td {  
+    border: none !important;  
+} 
+
+.table2 {
+	border: 5px;
+	margin: 0 auto;
+}
+
+body {
+	background-color: #eeeeee;
+	/*margin: 5px;*/
+	font-size: 12px; /* Georgia, Verdana, Tahona;*/
+	font-weight: normal;
+	/*margin: 0 auto; */
+}
+
+#divum {
+	width: 700px;
+	height: 500px;
+	background: #EEEEEE;
+}
+
+#font_um {
+	font-family: Verdana, Georgia, Arial;
+	font-size: 12px;
+}

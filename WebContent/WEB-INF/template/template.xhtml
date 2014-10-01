@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view contentType="text/html" />
+<h:head>
+	<title>Sistema de Curriculos</title>
+	<h:outputStylesheet library="css" name="tabelas.css" />
+	<title>.:: Frigorifico Angelelli ::. Sempre a melhor carne!</title>
+</h:head>
+<body>
+	<h:panelGrid columns="1" styleClass="table1">
+		<h:graphicImage library="images" name="logo.png"
+			style="text-align:center;" />
+		<ui:insert name="dados">
+			<p>Area de dados padrao:</p>
+		</ui:insert>
+		<h:messages />
+	</h:panelGrid>
+</body>
+</html>
